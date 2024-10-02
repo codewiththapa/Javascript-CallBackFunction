@@ -211,3 +211,64 @@ console.log('i am hey callback function')
 callMe('thapa',hey)  
 
 
+// Here..we are passing callback function in main calculate function using different functions..
+
+//this is calculate main function
+const calculate = (a,b,operations) => {
+  return operations(a,b)
+  }
+
+
+  
+  // method 1: passing ANONYMOUS FUNCTION directly as a argument(value) in calculate function
+  const result = calculate(100,10,function(num1,num2){
+    return num1+num2
+  });
+  
+  console.log(result);  // output: 110
+  
+  
+  //method 2: Declaring subtraction ARROW callback FUNCTION separately and passing later in calculate function 
+  const subtraction = (a,b) => a-b
+  
+  //or if we are using culry braces in arrow func. use return statement..
+  //const subtraction = (a,b) =>{return a-b}
+  
+  console.log(calculate(20,10,subtraction))  // 10
+  
+  
+  //method 3: passing function decalaration/function stateement as a callbackfunc.
+  
+  function multply (a,b){
+  console.log(a*b)
+  }
+  
+  calculate(4,4,multply)
+
+
+//
+
+const s = (x,y,cb) =>{
+  return cb(x,y)
+  }
+  
+  const abcd = function(w,z){
+  return(w/z)
+  }
+  
+  console.log( s(12,3,function(x,y){   //output:15
+          return (x+y)
+  }))
+  
+   console.log(s(20,20,abcd))  // output:1
+
+   //
+
+   function plus (a,b,cb){
+    let result = a+b;
+    cb(result);
+    }
+    
+    plus(100,100,function(val){
+       console.log(val)              //outout:200
+    })
